@@ -1,7 +1,7 @@
 package ru.avalon.java.j20.labs.tasks;
 
 import ru.avalon.java.j20.labs.Task;
-
+import ru.avalon.java.j20.labs.models.Point;
 /**
  * Задание №2.
  *
@@ -14,6 +14,9 @@ public class Task2 implements Task {
      */
     @Override
     public void run() {
+
+        
+        
         /*
          * TODO(Студент): Выполнять задание №2
          *
@@ -34,5 +37,11 @@ public class Task2 implements Task {
          * 4. С использованием отладчика проверьте корректность
          *    работы программы.
          */
+        Point<Float, Float> pointA = new Point(1.5, 7f);
+        Point<Integer, Integer> pointB = new Point(5, 7);
+    
+        Double distance = pointA.distanceTo(pointB);
+        
+        System.out.println("  Distance between A("+pointA.getX()+", "+pointA.getY()+") and B("+pointB.getX()+","+pointB.getY()+") is " + distance);
     }
 }

@@ -3,7 +3,7 @@ package ru.avalon.java.j20.labs.tasks;
 import ru.avalon.java.j20.labs.Task;
 
 import java.util.Iterator;
-
+import ru.avalon.java.j20.labs.models.Fibonacci;
 /**
  * Задание №3
  *
@@ -34,5 +34,12 @@ public class Task3 implements Task {
          * 4. С использованием отладчика проверьте корректность
          *    выполнения задания.
          */
+        Fibonacci fNums = new Fibonacci(20);
+        Iterator iter = fNums.iterator();
+        while(iter.hasNext())
+            iter.next();
+        /*for (int elem: fNums.getNums())
+            System.out.print(", " + elem);
+        System.out.println("\r\n");*/
     }
 }

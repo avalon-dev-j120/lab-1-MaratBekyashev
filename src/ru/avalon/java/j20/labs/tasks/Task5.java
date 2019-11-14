@@ -23,7 +23,7 @@ public class Task5 implements Task {
      */
     @Override
     public void run() {
-        final int[] array = arrayFactory.getInstance(20);
+        final Integer[] array = arrayFactory.getInstance(20);
 
         List<Integer> list = null;
 
