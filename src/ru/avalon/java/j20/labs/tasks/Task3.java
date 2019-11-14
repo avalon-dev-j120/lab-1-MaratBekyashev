@@ -37,9 +37,7 @@ public class Task3 implements Task {
         Fibonacci fNums = new Fibonacci(20);
         Iterator iter = fNums.iterator();
         while(iter.hasNext())
-            iter.next();
-        /*for (int elem: fNums.getNums())
-            System.out.print(", " + elem);
-        System.out.println("\r\n");*/
+            System.out.print(", " + iter.next());
+        System.out.println("\r\n");
     }
 }

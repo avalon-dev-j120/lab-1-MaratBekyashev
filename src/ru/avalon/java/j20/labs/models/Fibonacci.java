@@ -18,18 +18,20 @@ import java.util.Iterator;
  */
 public class Fibonacci implements Iterable<Integer> {
   private int[] nums = null; 
-
+  private int maxLength = -1;
+  
   public Fibonacci(int length){
     if (length > 0) {
-      nums = new int[length]; 
+      this.maxLength = length;
+      this.nums = new int[length]; 
       if (length == 1)
-         nums[0] = 0;       
+         this.nums[0] = 0;       
       else {
-         nums[0] = 0;
-         nums[1] = 1;
+         this.nums[0] = 0;
+         this.nums[1] = 1;
       }
     for (int i = 2; i < length; i++)
-      nums[i] = nums[i-1] + nums[i-2];
+      this.nums[i] = this.nums[i-1] + this.nums[i-2];
     }
     }
 
@@ -44,6 +46,12 @@ public class Fibonacci implements Iterable<Integer> {
      * чисел Фибоначчи.
      */
     private static class FibonacciIterator implements Iterator<Integer> {
+      private Fibonacci fib = null;
+      private int currIndex = -1;
+
+      private FibonacciIterator(Fibonacci f){
+        this.fib = f;
+      }
       private int index = -1; 
         /**
          * Определяет, есть ли следующее значение
@@ -56,13 +64,11 @@ public class Fibonacci implements Iterable<Integer> {
         @Override
         public boolean hasNext() {
           boolean result = false;
-          try {
-             if (Fibonacci.nums[index] == 0){}
-             result = true;
+          if (this.currIndex < this.fib.maxLength){
+            result = true;
           }
-          catch (NullPointerException e){
-            result = false;
-          }
+          else
+            result = false;              
           return result;
         }
 
@@ -74,8 +80,7 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
-              
+          return this.fib.nums[++this.currIndex];
         }
     }
 
@@ -87,6 +92,6 @@ public class Fibonacci implements Iterable<Integer> {
      */
     @Override
     public Iterator<Integer> iterator() {
-        return new FibonacciIterator();
+      return new FibonacciIterator(this);
     }
 }
