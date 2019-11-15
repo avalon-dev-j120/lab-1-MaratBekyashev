@@ -3,7 +3,7 @@ package ru.avalon.java.j20.labs.models;
 /**
  * Модель представления о точке.
  */
-public class Point <X extends Number, Y extends Number>{
+public class Point <T extends Number>{
     /**
      * Абсцисса точки.
      */
@@ -25,7 +25,7 @@ public class Point <X extends Number, Y extends Number>{
         this.x = x;
         this.y = y;
     }*/
-    public Point(X x, Y y) {
+    public Point(T x, T y) {
         this.x = x.floatValue();
         this.y = y.floatValue();
     }

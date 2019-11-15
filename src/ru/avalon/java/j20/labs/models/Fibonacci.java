@@ -33,65 +33,60 @@ public class Fibonacci implements Iterable<Integer> {
     for (int i = 2; i < length; i++)
       this.nums[i] = this.nums[i-1] + this.nums[i-2];
     }
-    }
+  }
 
-    public int[] getNums() {
-      return this.nums;
-    }
-    public int getElement(int index){
+  public int[] getNums() {
+    return this.nums;
+  }
+
+  public int getElement(int index){
       return this.nums[index];
+  }
+  /**
+  * Итератор, выполняющий обход последовательности
+  * чисел Фибоначчи.
+  */
+  private static class FibonacciIterator implements Iterator<Integer> {
+    private Fibonacci fib = null;
+    private int currIndex = -1;
+
+    private FibonacciIterator(Fibonacci f){
+      this.fib = f;
     }
     /**
-     * Итератор, выполняющий обход последовательности
-     * чисел Фибоначчи.
-     */
-    private static class FibonacciIterator implements Iterator<Integer> {
-      private Fibonacci fib = null;
-      private int currIndex = -1;
-
-      private FibonacciIterator(Fibonacci f){
-        this.fib = f;
-      }
-      private int index = -1; 
-        /**
-         * Определяет, есть ли следующее значение
-         * последовательности чисел Фибоначчи.
-         *
-         * @return {@code true}, если следующее число
-         * последовательности существует. В обратном случае
-         * {@code false}.
-         */
-        @Override
-        public boolean hasNext() {
-          boolean result = false;
-          if (this.currIndex < this.fib.maxLength){
-            result = true;
-          }
-          else
-            result = false;              
-          return result;
-        }
-
-        /**
-         * Возвращает следующее число последовательности
-         * чисел Фибоначчи.
-         *
-         * @return следующее число последовательности.
-         */
-        @Override
-        public Integer next() {
-          return this.fib.nums[++this.currIndex];
-        }
-    }
-
-    /**
-     * Возвращает итератор, позволяющий выполнить обход
-     * последовательности чисел Фибоначчи.
-     *
-     * @return итератор последовательности чисел Фибоначчи
-     */
+    * Определяет, есть ли следующее значение
+    * последовательности чисел Фибоначчи.
+    *
+    * @return {@code true}, если следующее число
+    * последовательности существует. В обратном случае
+    * {@code false}.
+    */
     @Override
-    public Iterator<Integer> iterator() {
-      return new FibonacciIterator(this);
+    public boolean hasNext() {
+      boolean result = this.currIndex < this.fib.maxLength-1;
+      return result;
     }
+
+    /**
+    * Возвращает следующее число последовательности
+    * чисел Фибоначчи.
+    *
+    * @return следующее число последовательности.
+    */
+    @Override
+    public Integer next() {
+      ++this.currIndex;
+      return this.fib.nums[this.currIndex];
+    }
+  }
+  /**
+  * Возвращает итератор, позволяющий выполнить обход
+  * последовательности чисел Фибоначчи.
+  *
+  * @return итератор последовательности чисел Фибоначчи
+  */
+  @Override
+  public Iterator<Integer> iterator() {
+    return new FibonacciIterator(this);
+  }
 }

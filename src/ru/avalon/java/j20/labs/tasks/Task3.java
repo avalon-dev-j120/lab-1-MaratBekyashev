@@ -36,8 +36,16 @@ public class Task3 implements Task {
          */
         Fibonacci fNums = new Fibonacci(20);
         Iterator iter = fNums.iterator();
-        while(iter.hasNext())
-            System.out.print(", " + iter.next());
+        Integer sum = 0;
+        Integer elem = null;
+        System.out.println("  Сгенерированный ряд чисел Фибоначчи:");
+        while(iter.hasNext()){
+          elem = (Integer)iter.next();
+          sum += elem;
+          System.out.print(", " + elem);
+        }
+
         System.out.println("\r\n");
+        System.out.println("  Сумма чисел сгенерированного ряда Фибоначчи: " + sum);
     }
 }

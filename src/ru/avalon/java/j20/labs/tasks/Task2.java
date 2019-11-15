@@ -37,8 +37,8 @@ public class Task2 implements Task {
          * 4. С использованием отладчика проверьте корректность
          *    работы программы.
          */
-        Point<Float, Float> pointA = new Point(1.5, 7f);
-        Point<Integer, Integer> pointB = new Point(5, 7);
+        Point<Float> pointA = new Point(1.5, 7f);
+        Point<Integer> pointB = new Point(5, 7);
     
         Double distance = pointA.distanceTo(pointB);
         
