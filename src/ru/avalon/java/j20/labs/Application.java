@@ -33,7 +33,7 @@ public class Application {
        * порядок и/или закомментировать любой из элементов
        * массива.
        */
-	    for (Task task : tasks) {
+      for (Task task : tasks) {
         System.out.println("**** CLASS: "+ task.getClass().getName()+ " run result****");
         task.run();
       }

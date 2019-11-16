@@ -46,7 +46,7 @@ public class Person
 
    //@Override
     public boolean equals(Person other) {
-       return this.hashCode() ==  other.hashCode();
+       return this.hashCode() == other.hashCode();
     }
     @Override
     public int hashCode(){
