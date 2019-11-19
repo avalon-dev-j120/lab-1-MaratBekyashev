@@ -28,7 +28,6 @@ public class Task5 implements Task {
         List<Integer> list = null;
         list = Arrays.asList(array); // Способ раз
         list = new ArrayList<>(Arrays.asList(array)); // Способ два
-        list = new ArrayList<>(Arrays.asList(array)); // Способ два
 
         Set<Integer> set = new HashSet<>();
         set.addAll(list);
