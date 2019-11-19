@@ -3,11 +3,8 @@ package ru.avalon.java.j20.labs.tasks;
 import ru.avalon.java.j20.labs.Task;
 import ru.avalon.java.j20.labs.core.RandomArrayFactory;
 
-import java.util.List;
-import java.util.Set;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
+
 
 /**
  * Задание №5.
@@ -28,7 +25,10 @@ public class Task5 implements Task {
     public void run() {
         final Integer[] array = arrayFactory.getInstance(20);
 
-        List<Integer> list = new ArrayList<>(Arrays.asList(array));
+        List<Integer> list = null;
+        list = Arrays.asList(array); // Способ раз
+        list = new ArrayList<>(Arrays.asList(array)); // Способ два
+        list = new ArrayList<>(Arrays.asList(array)); // Способ два
 
         Set<Integer> set = new HashSet<>();
         set.addAll(list);
@@ -43,15 +43,22 @@ public class Task5 implements Task {
          * 3. С использованием отладчика проверьте корректность
          *    выполнения задания.
          */
-      System.out.println("  Содержимое листа:");
-        for (Integer e: list)
+
+      System.out.println("  Содержимое листа for-each:");
+      for (Integer e: list)
         System.out.print(", "+ e);
       System.out.println("\r\n");
 
-      System.out.println("  Содержимое сета:");
+      System.out.println("  Содержимое листа forEach:");
+      list.forEach(number -> System.out.print(", "+number));
+      System.out.println("\r\n");
+
+
+      System.out.println("  Содержимое Set-а for-each:");
         for (Integer e: set)
         System.out.print(", "+ e);
       System.out.println("\r\n");
+
 
     }
 }
