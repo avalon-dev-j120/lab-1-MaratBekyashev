@@ -35,13 +35,6 @@ public class Fibonacci implements Iterable<Integer> {
     }
   }
 
-  public int[] getNums() {
-    return this.nums;
-  }
-
-  public int getElement(int index){
-      return this.nums[index];
-  }
   /**
   * Итератор, выполняющий обход последовательности
   * чисел Фибоначчи.
