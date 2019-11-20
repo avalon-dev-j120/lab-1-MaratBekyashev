@@ -17,22 +17,11 @@ import java.util.Iterator;
  * @see <a href="https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D0%BB%D0%B0_%D0%A4%D0%B8%D0%B1%D0%BE%D0%BD%D0%B0%D1%87%D1%87%D0%B8">Числа Фибоначчи</a>
  */
 public class Fibonacci implements Iterable<Integer> {
-  private int[] nums = null; 
-  private int maxLength = -1;
+  private int Length = 0;
   
   public Fibonacci(int length){
-    if (length > 0) {
-      this.maxLength = length;
-      this.nums = new int[length]; 
-      if (length == 1)
-         this.nums[0] = 0;       
-      else {
-         this.nums[0] = 0;
-         this.nums[1] = 1;
-      }
-    for (int i = 2; i < length; i++)
-      this.nums[i] = this.nums[i-1] + this.nums[i-2];
-    }
+    if (length > 0)
+      this.Length = length;
   }
 
   /**
@@ -40,11 +29,13 @@ public class Fibonacci implements Iterable<Integer> {
   * чисел Фибоначчи.
   */
   private static class FibonacciIterator implements Iterator<Integer> {
-    private Fibonacci fib = null;
     private int currIndex = -1;
+    private int length;
+    private int num_2;
+    private int num_1;
 
-    private FibonacciIterator(Fibonacci f){
-      this.fib = f;
+    private FibonacciIterator(int length){
+      this.length = length;
     }
     /**
     * Определяет, есть ли следующее значение
@@ -56,7 +47,10 @@ public class Fibonacci implements Iterable<Integer> {
     */
     @Override
     public boolean hasNext() {
-      boolean result = this.currIndex < this.fib.maxLength-1;
+      boolean result = this.currIndex < this.length-1;
+      // при достижении конца последовательности сбрасываем указатель на начало, чтобы можно было пройти повторно
+      if (this.currIndex == this.length-1)
+        this.currIndex = -1;
       return result;
     }
 
@@ -64,12 +58,29 @@ public class Fibonacci implements Iterable<Integer> {
     * Возвращает следующее число последовательности
     * чисел Фибоначчи.
     *
-    * @return следующее число последовательности.
+    * @return следующее число последовательности. Последнее:
     */
     @Override
     public Integer next() {
+      int result;
       ++this.currIndex;
-      return this.fib.nums[this.currIndex];
+
+      if (this.currIndex == 0){
+        this.num_2 = 0;
+        this.num_1 = 1;
+        result = 0;
+      }
+      else if (this.currIndex == 1) {
+        this.num_2 = 0;
+        this.num_1 = 1;
+        result = 1;
+      }
+      else {
+        result = this.num_2 + this.num_1;
+        this.num_2 = this.num_1;
+        this.num_1 = result;
+      }
+      return result;
     }
   }
   /**
@@ -80,6 +91,6 @@ public class Fibonacci implements Iterable<Integer> {
   */
   @Override
   public Iterator<Integer> iterator() {
-    return new FibonacciIterator(this);
+    return new FibonacciIterator(this.Length);
   }
 }

@@ -34,18 +34,18 @@ public class Task3 implements Task {
          * 4. С использованием отладчика проверьте корректность
          *    выполнения задания.
          */
-        Fibonacci fNums = new Fibonacci(20);
+        Fibonacci fNums = new Fibonacci(5);
         Iterator<Integer> iter = fNums.iterator();
-        Integer sum = 0;
-        Integer elem = null;
-        System.out.println("  Сгенерированный ряд чисел Фибоначчи:");
-        while(iter.hasNext()){
-          elem = iter.next();
-          sum += elem;
-          System.out.print(", " + elem);
-        }
 
+        System.out.println("  Сгенерированный ряд чисел Фибоначчи:");
+        while(iter.hasNext())
+          System.out.print(", " + iter.next());
         System.out.println("\r\n");
+
+        // Убедимся , что возможен повторный проход по итератору
+        Integer sum = 0;
+        while(iter.hasNext())
+          sum += iter.next();
         System.out.println("  Сумма чисел сгенерированного ряда Фибоначчи: " + sum);
     }
 }
