@@ -34,7 +34,7 @@ public class Task3 implements Task {
          * 4. С использованием отладчика проверьте корректность
          *    выполнения задания.
          */
-        Fibonacci fNums = new Fibonacci(5);
+        Fibonacci fNums = new Fibonacci(20);
         Iterator<Integer> iter = fNums.iterator();
 
         System.out.println("  Сгенерированный ряд чисел Фибоначчи:");
