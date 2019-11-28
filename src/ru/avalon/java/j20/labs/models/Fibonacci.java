@@ -48,9 +48,6 @@ public class Fibonacci implements Iterable<Integer> {
     @Override
     public boolean hasNext() {
       boolean result = this.currIndex < this.length-1;
-      // при достижении конца последовательности сбрасываем указатель на начало, чтобы можно было пройти повторно
-      if (this.currIndex == this.length-1)
-        this.currIndex = -1;
       return result;
     }
 

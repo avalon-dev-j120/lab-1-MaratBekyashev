@@ -42,6 +42,7 @@ public class Task3 implements Task {
           System.out.print(", " + iter.next());
         System.out.println("\r\n");
 
+        iter = fNums.iterator();
         // Убедимся , что возможен повторный проход по итератору
         Integer sum = 0;
         while(iter.hasNext())
