@@ -1,9 +1,12 @@
 package ru.avalon.java.j20.labs.models;
 
+import java.util.Objects;
+
 /**
  * Представление о человеке.
  */
-public class Person {
+public class Person
+{
     /**
      * Имя.
      */
@@ -21,25 +24,33 @@ public class Person {
      * @param surname дата рождения человека
      */
     public Person(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
+      this.name = name;
+      this.surname = surname;
     }
-
     /**
      * возвращает имя человека.
      *
      * @return имя человека
      */
     public String getName() {
-        return name;
+      return name;
     }
-
     /**
      * Возвращает фамилию человека.
      *
      * @return фамилия человека
      */
     public String getSurname() {
-        return surname;
+      return surname;
     }
+
+   //@Override
+    public boolean equals(Person other) {
+       return this.hashCode() == other.hashCode();
+    }
+    @Override
+    public int hashCode(){
+      return Objects.hash(this.name, this.surname);
+    }
+
 }

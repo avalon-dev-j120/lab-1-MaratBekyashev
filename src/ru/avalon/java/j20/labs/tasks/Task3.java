@@ -3,7 +3,7 @@ package ru.avalon.java.j20.labs.tasks;
 import ru.avalon.java.j20.labs.Task;
 
 import java.util.Iterator;
-
+import ru.avalon.java.j20.labs.models.Fibonacci;
 /**
  * Задание №3
  *
@@ -34,5 +34,19 @@ public class Task3 implements Task {
          * 4. С использованием отладчика проверьте корректность
          *    выполнения задания.
          */
+        Fibonacci fNums = new Fibonacci(20);
+        Iterator<Integer> iter = fNums.iterator();
+
+        System.out.println("  Сгенерированный ряд чисел Фибоначчи:");
+        while(iter.hasNext())
+          System.out.print(", " + iter.next());
+        System.out.println("\r\n");
+
+        iter = fNums.iterator();
+        // Убедимся , что возможен повторный проход по итератору
+        Integer sum = 0;
+        while(iter.hasNext())
+          sum += iter.next();
+        System.out.println("  Сумма чисел сгенерированного ряда Фибоначчи: " + sum);
     }
 }

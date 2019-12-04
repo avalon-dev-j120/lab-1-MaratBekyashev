@@ -17,7 +17,9 @@ public class Task4 implements Task {
     public void run() {
         Person a = new Person("Иван", "Иванов");
         Person b = new Person("Иван", "Иванов");
+
         boolean isEqual = a.equals(b);
+
         /*
          * TODO(Студент): Выполните задание №4
          *
@@ -31,5 +33,6 @@ public class Task4 implements Task {
          * 3. С использованием отладчика проверьте что сравнение
          *    объектов типа Person выполняется корректно.
          */
+        System.out.println(isEqual?"Иваны Ивановы равны между собой":"Иваны Ивановы НЕ равны между собой");
     }
 }
